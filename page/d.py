@@ -55,7 +55,7 @@ from PIL import Image
 st.title("게임 PC방")
 
 # 이미지 크기 설정
-image_width = 250  # 모든 이미지의 너비를 250픽셀로 설정
+image_width = 230  # 모든 이미지의 너비를 250픽셀로 설정
 
 # 게임 데이터
 games = [
