@@ -143,35 +143,32 @@ st.write(f"총 가격: {total_price} 원")
 import streamlit as st
 from PIL import Image
 
-# 제목 설정
 st.title("먹거리 주문")
 
 
-# 가격 설정
 prices = {
     '너구리': 1500,
     '짜파게티': 1500,
-    '불닭볶음면': 2000,  # 예시 가격
-    '신라면': 1500,      # 예시 가격
-    '비빔면': 2000,      # 예시 가격
-    '야채볶음밥': 2500,  # 예시 가격
-    '새우볶음밥': 3000,  # 예시 가격
-    '참치마요덮밥': 3500, # 예시 가격
-    '스팸마요덮밥': 4000, # 예시 가격
-    '김치볶음밥': 2500,   # 예시 가격
-    '핫도그': 2000,       # 예시 가격
-    '치즈스틱': 1500,     # 예시 가격
-    '감자튀김': 1500,     # 예시 가격
-    '고기만두': 2500,     # 예시 가격
-    '김치만두': 2500,     # 예시 가격
-    '커피': 2000,         # 예시 가격
-    '탄산음료': 1500,     # 예시 가격
-    '이온음료': 2000,     # 예시 가격
-    '카페인음료': 2500,   # 예시 가격
-    '아이스티': 1500      # 예시 가격
+    '불닭볶음면': 2000,  
+    '신라면': 1500,      
+    '비빔면': 2000,      
+    '야채볶음밥': 2500,  
+    '새우볶음밥': 3000,  
+    '참치마요덮밥': 3500, 
+    '스팸마요덮밥': 4000, 
+    '김치볶음밥': 2500,   
+    '핫도그': 2000,       
+    '치즈스틱': 1500,     
+    '감자튀김': 1500,     
+    '고기만두': 2500,     
+    '김치만두': 2500,     
+    '커피': 2000,         
+    '탄산음료': 1500,     
+    '이온음료': 2000,     
+    '카페인음료': 2500,   
+    '아이스티': 1500      
 }
 
-# 주문 항목 선택 및 이미지 표시
 items = [
     ('너구리', 'ngr.png'),
     ('짜파게티', 'Jpgt.png'),
@@ -195,15 +192,14 @@ items = [
     ('아이스티', 'icetea.png')
 ]
 
-# 총 가격 계산
 total_price = 0
 
-# 5개의 열로 나누어 표시
-num_columns = 5  # 열 수 설정
+
+num_columns = 5   
 for i in range(0, len(items), num_columns):
-    cols = st.columns(num_columns)  # 5개의 열 생성
+    cols = st.columns(num_columns)  
     for j in range(num_columns):
-        if i + j < len(items):  # 인덱스 초과 방지
+        if i + j < len(items):   
             item, img_file = items[i + j]
             with cols[j]:
                 checked = st.checkbox(item, key=item)
@@ -212,11 +208,12 @@ for i in range(0, len(items), num_columns):
                 if checked:
                     total_price += prices[item]
 
-# 총 가격 출력
-st.header(f"총 가격: {total_price} 원")
+ 
+
 
 st.header("결제 방법 선택")
-payment_method = st.radio("결제 방법을 선택하세요:", ("신용카드", "계좌이체", "휴대폰 결제"))
+payment_method = st.selectbox("결제 방법을 선택하세요:", ("신용카드", "계좌이체", "휴대폰 결제"))
 
-# 선택한 결제 방법 표시
+
 st.write(f"선택한 결제 방법: {payment_method}")
+st.header(f"총 가격: {total_price} 원")

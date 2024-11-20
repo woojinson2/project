@@ -20,12 +20,28 @@ pages = {
     ]
 }
 
-pg = st.navigation(pages)
-pg.run()
+st.sidebar.header("메시지 보내기")
+recipient = st.sidebar.selectbox(
+    "수신자를 선택하세요",
+    ["김민서", "김철수", "이영희", "박지수"]
+)
 
-# 사이드바에 타이머 설정
-st.sidebar.title("남은시간")
-timer_duration_hours = st.sidebar.number_input("남은시간 설정 (시간)", min_value=0.1, value=2.0, step=0.1)
+# 사이드바에서 메시지 입력
+message = st.sidebar.text_area("메시지를 입력하세요")
+
+# 버튼으로 메시지 전송
+if st.sidebar.button("메시지 보내기"):
+    if message.strip():
+        st.success(f"{recipient}에게 메시지를 보냈습니다!")
+        st.write(f"**수신자:** {recipient}")
+        st.write(f"**메시지 내용:** {message}")
+    else:
+        st.error("메시지를 입력해주세요!")
+
+
+
+st.sidebar.title("타이머")
+timer_duration_hours = st.sidebar.number_input("타이머 설정 (시간)", min_value=0.1, value=1.0, step=0.1)
 
 # 버튼 클릭 시 타이머 시작
 if st.sidebar.button("타이머 시작"):
@@ -40,3 +56,8 @@ if st.sidebar.button("타이머 시작"):
         time.sleep(1)  # 1초 대기
 
     timer_placeholder.write("타이머가 종료되었습니다!")
+
+
+pg = st.navigation(pages)
+pg.run()
+

@@ -22,6 +22,7 @@ if btn:
     if db_pw == pw:
             #로그인을 성공! sidebar ID님 환영합니다.
             st.sidebar.write(f"{id}님 환영합니다.")
+        
     else:            
             #로그인 실패 -> 로그인 실패!
             #ID test
@@ -29,4 +30,3 @@ if btn:
             st.error("로그인 실패!!")
 
     st.switch_page("./page/d.py")
-    
