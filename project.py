@@ -23,7 +23,7 @@ pages = {
 st.sidebar.header("메시지 보내기")
 recipient = st.sidebar.selectbox(
     "수신자를 선택하세요",
-    ["김민서", "김철수", "이영희", "박지수"]
+    ["관리자", "PC1", "PC2", "PC3"]
 )
 
 # 사이드바에서 메시지 입력
